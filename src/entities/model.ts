@@ -92,6 +92,7 @@ const postsSlice = createSliceWithThunks({
     fetchPosts: create.asyncThunk(
       async () => {
         const res = await fetch(`${BASE_URL}/posts`);
+        
         await wait(getRandomInt(500, 1500));
         return (await res.json()) as Post[];
       },
