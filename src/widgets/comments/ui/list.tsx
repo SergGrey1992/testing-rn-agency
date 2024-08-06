@@ -15,7 +15,7 @@ import {Comment} from './comment';
 import {Empty} from './empty';
 
 type Props = {
-  id: number;
+  id: string;
 };
 
 export const CommentsList = ({id}: Props) => {
@@ -31,7 +31,7 @@ export const CommentsList = ({id}: Props) => {
   }, [dispatch, id]);
 
   const removeCommentAction = useCallback(
-    (_id: number) => {
+    (_id: string) => {
       dispatch(removeComment({id: _id}));
     },
     [dispatch],

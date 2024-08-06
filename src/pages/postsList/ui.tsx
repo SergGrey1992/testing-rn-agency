@@ -1,6 +1,7 @@
 import {AddPost} from 'features/addPost/ui/AddPost';
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {COLORS} from 'shared/config/colors';
 import {global} from 'shared/config/global/styles';
 
 import {PostsList} from 'widgets/posts/ui/list';
@@ -29,5 +30,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
+    color: COLORS.dark,
   },
 });

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { COLORS } from '../colors';
 
 export const global = StyleSheet.create({
   full: {
@@ -8,5 +9,6 @@ export const global = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     lineHeight: undefined,
+    color: COLORS.dark,
   },
 });

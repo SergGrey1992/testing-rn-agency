@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {COLORS} from 'shared/config/colors';
 
 type Props = {
   label: string;
@@ -21,9 +22,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '700',
     opacity: 0.5,
+    color: COLORS.dark,
   },
   text: {
     fontSize: 18,
     fontWeight: '500',
+    color: COLORS.dark,
   },
 });

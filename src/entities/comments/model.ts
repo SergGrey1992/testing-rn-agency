@@ -34,7 +34,7 @@ export const fetchComment = createAsyncThunk<CommentType[], {id: string}>(
 
 export const createComment = createAsyncThunk<
   CommentType,
-  FormCommentValues & {postId: number}
+  FormCommentValues & {postId: string}
 >('comments/createComment', async ({text, postId}) => {
   try {
     const res = await fetch(`${BASE_URL}/comments`, {
@@ -51,7 +51,7 @@ export const createComment = createAsyncThunk<
   } catch (error) {}
 });
 
-export const removeComment = createAsyncThunk<CommentType, {id: number}>(
+export const removeComment = createAsyncThunk<CommentType, {id: string}>(
   'comments/removeComment',
   async ({id}, {rejectWithValue}) => {
     try {

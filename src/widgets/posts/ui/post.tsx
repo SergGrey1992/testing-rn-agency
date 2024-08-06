@@ -7,12 +7,13 @@ import React, {useState} from 'react';
 import {FormProvider, SubmitHandler, useForm} from 'react-hook-form';
 import {View, StyleSheet, Pressable} from 'react-native';
 import Animated, {FadeInLeft, FadeOutRight} from 'react-native-reanimated';
+import {COLORS} from 'shared/config/colors';
 import {NavProp} from 'shared/routes';
 import {Button, Input, VariantButton} from 'shared/ui';
 
 type Props = {
-  removeAction: (id: number) => void;
-  submitAction: (id: number, data: FormValues) => void;
+  removeAction: (id: string) => void;
+  submitAction: (id: string, data: FormValues) => void;
 } & Post;
 
 export const PostItem = React.memo(
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 1,
+    borderColor: COLORS.dark,
     borderRadius: 3,
     flexDirection: 'row',
     gap: 24,
@@ -110,10 +112,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     lineHeight: undefined,
+    color: COLORS.dark,
   },
   body: {
     fontSize: 12,
     lineHeight: undefined,
+    color: COLORS.dark,
   },
   actionsBox: {
     flexDirection: 'row',

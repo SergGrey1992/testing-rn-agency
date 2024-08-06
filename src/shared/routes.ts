@@ -5,7 +5,7 @@ import {
 
 export type RootStackParamList = {
   Posts: undefined;
-  Post: {id: number; title: string; body: string};
+  Post: {id: string; title: string; body: string};
 };
 
 export type ScreenProps<Screen extends keyof RootStackParamList> =

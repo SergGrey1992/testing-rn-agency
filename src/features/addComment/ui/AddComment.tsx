@@ -9,7 +9,7 @@ import {Button, Input} from 'shared/ui';
 import {object, string} from 'yup';
 
 type Props = {
-  postId: number;
+  postId: string;
 };
 
 export const commentSchema = object({

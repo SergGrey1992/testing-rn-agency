@@ -7,7 +7,7 @@ import {wait} from 'shared/lib/wait';
 type State = {
   name: string;
   disabled: {
-    id: number;
+    id: string;
     action: string;
   };
 };
@@ -20,7 +20,7 @@ const profileSlice = createSliceWithThunks({
   name: 'profile',
   initialState: {
     disabled: {
-      id: -1,
+      id: '-1',
       action: '',
     },
   } as State,
@@ -38,7 +38,7 @@ const profileSlice = createSliceWithThunks({
         },
       },
     ),
-    removeTaskId: create.reducer<number>((state, action) => {
+    removeTaskId: create.reducer<string>((state, action) => {
       state.disabled.id = action.payload;
       state.disabled.action = 'remove';
     }),

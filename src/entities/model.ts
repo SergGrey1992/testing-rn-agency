@@ -12,7 +12,7 @@ import {removeTaskId} from './porfile/model';
 import { BASE_URL } from 'shared/config/constanst';
 
 export type Post = {
-  id: number;
+  id: string;
   title: string;
   body: string;
   status: boolean;
@@ -20,7 +20,7 @@ export type Post = {
 
 const adapter = createEntityAdapter({
   selectId: (item: Post) => item.id,
-  sortComparer: (a, b) => b.id - a.id,
+  sortComparer: (a, b) => +b.id - +a.id,
 });
 
 const createSliceWithThunks = buildCreateSlice({
@@ -51,7 +51,7 @@ const postsSlice = createSliceWithThunks({
       },
     ),
     editTask: create.asyncThunk(
-      async (body: {id: number; data: FormValues}) => {
+      async (body: {id: string; data: FormValues}) => {
         const res = await fetch(`${BASE_URL}/posts/${body.id}`, {
           method: 'PUT',
           body: JSON.stringify(body.data),
@@ -70,7 +70,7 @@ const postsSlice = createSliceWithThunks({
       },
     ),
     removeTask: create.asyncThunk(
-      async (id: number, {dispatch}) => {
+      async (id: string, {dispatch}) => {
         const res = await fetch(`${BASE_URL}/posts/${id}`, {
           method: 'DELETE',
         });
@@ -78,7 +78,7 @@ const postsSlice = createSliceWithThunks({
 
         await wait(getRandomInt(500, 2000));
         const resp = await res.json();
-        dispatch(removeTaskId(-1));
+        dispatch(removeTaskId('-1'));
         return {...resp, id};
       },
       {

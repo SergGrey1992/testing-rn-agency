@@ -28,14 +28,14 @@ export const PostsList = ({}: Props) => {
   const dataPosts = useAppSelector(getAllPosts);
 
   const remove = useCallback(
-    (id: number) => {
+    (id: string) => {
       dispatch(removeTask(id));
     },
     [dispatch],
   );
 
   const submit = useCallback(
-    (id: number, data: FormValues) => {
+    (id: string, data: FormValues) => {
       dispatch(editTask({id, data}));
     },
     [dispatch],
