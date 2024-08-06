@@ -47,7 +47,7 @@ export const createComment = createAsyncThunk<
     });
 
     const resp = await res.json();
-    return resp;
+    return {...resp, text, postId: postId.toString(),};
   } catch (error) {}
 });
 
@@ -60,7 +60,7 @@ export const removeComment = createAsyncThunk<CommentType, {id: number}>(
       });
 
       const resp = await res.json();
-      return resp as CommentType;
+      return {...resp, id} as CommentType;
     } catch (error) {
       return rejectWithValue('remove comment error');
     }
@@ -78,7 +78,8 @@ export const editComment = createAsyncThunk<
     });
 
     const resp = await res.json();
-    return resp as CommentType;
+    console.log('resp', resp);
+    return {...resp, ...body} as CommentType;
   } catch (error) {
     return rejectWithValue('remove comment error');
   }

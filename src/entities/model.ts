@@ -41,10 +41,10 @@ const postsSlice = createSliceWithThunks({
           body: JSON.stringify(form),
         });
 
-        await wait(getRandomInt(2500, 5500));
+        await wait(getRandomInt(500, 1500));
         const resp = await res.json();
 
-        return resp;
+        return {...resp, ...data};
       },
       {
         fulfilled: (state, action) => adapter.addOne(state, action),
@@ -58,7 +58,6 @@ const postsSlice = createSliceWithThunks({
         });
 
         const resp = await res.json();
-
         return resp;
       },
       {
@@ -80,7 +79,7 @@ const postsSlice = createSliceWithThunks({
         await wait(getRandomInt(500, 2000));
         const resp = await res.json();
         dispatch(removeTaskId(-1));
-        return resp;
+        return {...resp, id};
       },
       {
         fulfilled: (state, action) => {
@@ -104,7 +103,6 @@ const postsSlice = createSliceWithThunks({
           state.loading = false;
         },
         fulfilled: (state, action) => {
-          console.log('action', action);
           state.loading = false;
           adapter.upsertMany(state, action.payload);
         },
